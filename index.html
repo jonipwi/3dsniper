@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#080b0d">
+  <title>Sniper Ops // V4</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="loading" class="screen">
+    <div class="loading-mark">S</div>
+    <div class="eyebrow">TACTICAL SIMULATION</div>
+    <h1>SNIPER OPS</h1>
+    <p id="loadingStatus">Loading range systems…</p>
+  </div>
+
+  <main id="menu" class="screen hidden">
+    <div class="menu-shell">
+      <header class="brand-row">
+        <div><div class="eyebrow">TACTICAL SIMULATION // BUILD 4.0</div><h1>SNIPER<br><span>OPS</span></h1></div>
+        <div class="profile-card">
+          <div><span>OPERATOR</span><b id="profileLevel">LVL 1</b></div>
+          <div class="xp-track"><i id="xpFill"></i></div>
+          <small><span id="profileXp">0 / 500 XP</span><span id="profileCredits">¤ 0</span></small>
+        </div>
+      </header>
+
+      <section class="menu-grid">
+        <div class="menu-main">
+          <div class="section-title"><span>01</span><div><b>SELECT OPERATION</b><small>V1–V4 CAMPAIGN</small></div></div>
+          <div id="missionList" class="mission-list"></div>
+        </div>
+        <aside class="loadout-panel">
+          <div class="section-title"><span>02</span><div><b>LOADOUT</b><small>PRIMARY WEAPON</small></div></div>
+          <div id="weaponList" class="weapon-list"></div>
+          <div class="stat-grid">
+            <label>DAMAGE <i id="damageStat"></i></label>
+            <label>VELOCITY <i id="velocityStat"></i></label>
+            <label>STABILITY <i id="stabilityStat"></i></label>
+          </div>
+          <button id="deployBtn" class="primary-btn">DEPLOY TO OPERATION <span>›</span></button>
+          <div class="save-actions"><button id="resetBtn">RESET SAVE</button><span>AUTOSAVE ENABLED</span></div>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <div id="game" class="hidden">
+    <div id="hud">
+      <div class="hud-top">
+        <div class="hud-block mission-block"><small id="missionTier">V1 // TRAINING</small><b id="missionName">ZERO THE RANGE</b><span id="objectiveText">Hit 8 targets</span></div>
+        <div class="hud-block environmental">
+          <div><small>WIND</small><b id="windReadout">0.0 m/s →</b></div><div><small>RANGE</small><b id="rangeReadout">--- m</b></div>
+          <div><small>ELEV</small><b id="elevationReadout">0.0 MIL</b></div><div><small>WINDAGE</small><b id="windageReadout">0.0 MIL</b></div>
+        </div>
+        <div class="hud-block ammo-block"><small id="weaponName">R700 SCOUT</small><b><span id="magCount">5</span><em>/</em><span id="reserveCount">25</span></b><span id="scoreReadout">SCORE 000000</span></div>
+      </div>
+      <div id="objectiveTracker" class="objective-tracker"></div>
+      <div id="detection" class="detection hidden"><span>ENEMY DETECTION</span><i><b id="detectionFill"></b></i></div>
+      <div id="message"></div>
+      <div id="crosshair"><i></i></div>
+      <div id="scopeOverlay"><div class="scope-glass"><div class="reticle-h"></div><div class="reticle-v"></div><div class="mil-dots horizontal">• • • • <b>•</b> • • • •</div><div class="mil-dots vertical">•<br>•<br>•<br><b>•</b><br>•<br>•<br>•</div><div class="scope-data"><span id="scopeRange">RNG ---</span><span id="scopeZoom">6×</span></div></div></div>
+      <div id="hitmarker"></div><div id="damageVignette"></div>
+      <div class="hud-bottom"><div class="controls-card">WASD MOVE · MOUSE AIM · LMB FIRE · RMB SCOPE<br>R RELOAD · SHIFT STEADY · ↑↓ ELEV · ←→ WINDAGE · ESC MENU</div><div id="stanceReadout">STANDING</div></div>
+    </div>
+    <div id="pause" class="modal hidden"><div class="modal-card"><div class="eyebrow">OPERATION PAUSED</div><h2 id="pauseTitle">ZERO THE RANGE</h2><button id="resumeBtn" class="primary-btn">RESUME</button><button id="restartBtn">RESTART MISSION</button><button id="menuBtn">ABORT TO MENU</button></div></div>
+    <div id="debrief" class="modal hidden"><div class="modal-card debrief-card"><div class="eyebrow" id="debriefLabel">OPERATION COMPLETE</div><h2 id="debriefTitle">MISSION ACCOMPLISHED</h2><div class="debrief-stats"><div><small>SCORE</small><b id="finalScore">0</b></div><div><small>ACCURACY</small><b id="finalAccuracy">0%</b></div><div><small>XP EARNED</small><b id="finalXp">+0</b></div><div><small>CREDITS</small><b id="finalCredits">+0</b></div></div><button id="continueBtn" class="primary-btn">RETURN TO OPERATIONS</button><button id="retryBtn">REPLAY MISSION</button></div></div>
+  </div>
+
+  <div id="fatalError" class="screen hidden"><div class="modal-card"><div class="eyebrow">SYSTEM ERROR</div><h2>SIMULATION FAILED TO START</h2><p id="fatalMessage"></p></div></div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
